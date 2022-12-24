@@ -31,7 +31,7 @@ $start.addEventListener('click', event => {
     let yDown = null
 
     document.addEventListener('touchstart', evt => {
-        const firstTouch = evt.getTouches[0];
+        const firstTouch = evt.touches[0];
         xDown = firstTouch.clientX;
         yDown = firstTouch.clientY;
     }, false)
@@ -49,15 +49,15 @@ $start.addEventListener('click', event => {
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
             if (xDiff > 0) {
-                snake.turn(6)
-            } else {
                 snake.turn(4)
+            } else {
+                snake.turn(6)
             }
         } else {
             if (yDiff > 0) {
-                snake.turn(2)
-            } else {
                 snake.turn(8)
+            } else {
+                snake.turn(2)
             }
         }
         xDown = null;
