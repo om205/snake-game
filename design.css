@@ -22,7 +22,7 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    z-index: 2;
+    z-index: 1;
 }
 
 .pane {
@@ -140,6 +140,7 @@ body {
 }
 @media screen and (max-width:850px) {
     body{
+        overscroll-behavior: contain;
         max-height: 100vh;
         min-height: 80%;
     }

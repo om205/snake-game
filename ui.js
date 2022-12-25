@@ -31,7 +31,7 @@ class UI
     {
         e.preventDefault()
         const formData = new FormData(e.target)
-        this.wall = formData.get('level')
+        this.wall = formData.get('level') === 'false' ? false :true
         this.fps = formData.get('fps')
         const theme = formData.get('theme')
         for(let key in themes)
