@@ -142,10 +142,6 @@ body {
     body{
         scroll-behavior: contain;
         max-height: 100vh;
-        max-height: -webkit-fill-available;
-    }
-    html {
-        max-height: -webkit-fill-available;
     }
     .pane {
         width: 90%;
