@@ -139,13 +139,14 @@ body {
 }
 
 @media screen and (max-width:850px) {
+
     body{
         scroll-behavior: contain;
         max-height: 100vh;
         max-height: -webkit-fill-available;
     }
     html {
-    height: -webkit-fill-available;
+      height: -webkit-fill-available;
     }
     .pane {
         width: 90%;
@@ -155,6 +156,7 @@ body {
         top: 10px;
         right: 0;
     }
+
     .settings {
         height: 80vh;
         width: 80vw;
