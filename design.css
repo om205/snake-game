@@ -142,6 +142,7 @@ body {
     body{
         scroll-behavior: contain;
         max-height: 100vh;
+        min-height:80%;
     }
     .pane {
         width: 90%;
