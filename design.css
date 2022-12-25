@@ -31,6 +31,7 @@ body {
     position: relative;
     background: rgba(245, 245, 245, 0.5);
     border: 15px double var(--bgThemeXXDark);
+    overscroll-behavior-y: contain;
 }
 
 .box {
