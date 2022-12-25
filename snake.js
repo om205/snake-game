@@ -73,19 +73,17 @@ class Snake {
         this.tail = null
         this.length = 1
         this.speed = 5
-        this.concreteWall = true
+        this.hitWall = false
         this.food = new Box('food',150,100,null,null)
         this.direction = 6
         this.movement = null
-        // this.temp = null
-        // this.speed_ctrl = null
         // this.turnPoints = []
     }
     move() 
     {
         const { posX, posY } = this.head
         try {
-            this.head.move(10,this.direction,this.concreteWall)
+            this.head.move(10,this.direction,this.hitWall)
         } catch (err) {
             if(err === 'hit')
             return this.stop()
@@ -120,28 +118,14 @@ class Snake {
             this.grow()
             this.placefood()
         }
-        // this.body.forEach(box => {
-        //     if((box.posX > x_start && box.posX < x_end)&&(posY⭐ > y_start && posY < y_end)&&box!=this.head)
-        //     {
-        //         console.log(x_start,x_end,y_start,y_end,':',this.head.posX,this.head.posY)
-        //         this.body.forEach(box => {
-        //             console.log(box.posX,box.posY)
-        //         })
-        //         console.log('')
-        //         return this.stop()
-        //     }
-        // })
     }
     start()
     {
         this.movement = setInterval(()=>this.move(),1000/this.speed)
-        // this.speed_ctrl = setInterval(() => {this.speed++;clearInterval(this.movement);this.movement = setInterval(() =>this.move(),1000/this.speed)},1000)
-        // this.temp = setInterval(() => this.grow(),2000)
     }
     stop()
     {
         clearInterval(this.movement)
-        // clearInterval(this.temp)
         clearInterval(this.speed_ctrl)
         ui.endGame(this)
     }

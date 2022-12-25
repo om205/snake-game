@@ -3,8 +3,9 @@ class UI
     constructor()
     {
         this.renderUI = null
-        this.fps = 20
+        this.fps = 50
         this.highScore = null
+        this.wall = false
     }
     setupUI(snake)
     {
@@ -26,9 +27,29 @@ class UI
         $pane.appendChild(b)
 
     }
+    setControls(e)
+    {
+        e.preventDefault()
+        const formData = new FormData(e.target)
+        this.wall = formData.get('level')
+        this.fps = formData.get('fps')
+        const theme = formData.get('theme')
+        for(let key in themes)
+        $cssVariables.style.setProperty(key,themes[key][theme])
+        this.closeSettings()
+    }
+    openSettings() 
+    {
+        $settings.style.display = 'block'
+    }
+    closeSettings()
+    {
+        $settings.style.display = 'none'
+    }
     newGame(snake)
     {
         $msg.style.display = 'none'
+        snake.hitWall = this.wall
         snake.start()
         this.renderUI = setInterval(() => {
             this.setupUI(snake)

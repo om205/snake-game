@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items:center;
-    background: linear-gradient(lightgreen, green);
+    background: linear-gradient(var(--bgThemeLight), var(--bgThemeDark));
 }
 
 .title {
@@ -30,13 +30,13 @@ body {
     width: 700px;
     position: relative;
     background: rgba(245, 245, 245, 0.5);
-    border: 15px double darkgreen;
+    border: 15px double var(--bgThemeXXDark);
 }
 
 .box {
     width: 10px;
     height: 10px;
-    background-color: hsl(120, 100%, 15%);
+    background-color: var(--bgThemeXXDark);
     border-radius: 20%;
     position: absolute;
     top: 0;
@@ -46,7 +46,7 @@ body {
 .msg {
     width: 33%;
     height: 150px;
-    background: radial-gradient(greenyellow,green);
+    background: radial-gradient(var(--bgThemeXXLight),var(--bgThemeDark));
     position: absolute;
     padding: 20px;
     justify-content: space-around;
@@ -72,7 +72,7 @@ body {
 }
 
 #start-btn {
-    background-color: darkgreen;
+    background-color: var(--bgThemeXXDark);
     color: white;
     width: 80px;
     height: 30px;
@@ -90,7 +90,7 @@ body {
 .score-panel {
     width: 100px;
     height: 30px;
-    background-color: limegreen;
+    background-color: var(--bgThemeXLight);
     border: 2px solid white;
     position: absolute;
     z-index: 1;
@@ -109,14 +109,39 @@ body {
     height: 30px;
     width: 30px;
     background-size: cover;
-    background-color: green;
     border: 1px dotted green;
     cursor: pointer;
     box-sizing: border-box;
 }
 
+.close {
+    color: white;
+    background-color: red;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    font-weight: bolder;
+    float: right;
+}
+
+.settings {
+    height: 500px;
+    width: 800px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 100px 50vh rgb(0,0,0,0.5);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid white;
+    position: absolute;
+    display: none;
+    z-index: 2;
+}
+
 @media screen and (max-width:850px) {
-    body {
+
+    body{
+        scroll-behavior: contain;
         max-height: 100vh;
         max-height: -webkit-fill-available;
     }
@@ -131,4 +156,55 @@ body {
         top: 10px;
         right: 0;
     }
+
+    .settings {
+        height: 80vh;
+        width: 80vw;
+    }
+}
+/* shivu */
+#settings-form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+
+}
+#settings-form div {
+    /* display: flex; */
+    width: 50%;
+    /* justify-content: space-between; */
+}
+#settings-form select {
+    float: right;
+    text-align: center;
+    font-family: cursive;
+    color: var(--bgThemeDark);
+}
+#settings-form select,input {
+    min-width: 100px;
+}
+.save {
+    width: 80px;
+    height: 40px;
+    background-color: var(--bgThemeXLight);
+    color: white;
+    /* border-radius: 5px; */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 5px white;
+}
+.save:hover {
+    box-shadow: 0 0 10px white;
+}
+
+:root {
+    --bgThemeLight: lightgreen;
+    --bgThemeDark: green;
+    --bgThemeXLight: limegreen;
+    --bgThemeXXLight: greenyellow;
+    --bgThemeXXDark: darkgreen;
+
 }
