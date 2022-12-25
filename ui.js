@@ -4,6 +4,7 @@ class UI
     {
         this.renderUI = null
         this.fps = 20
+        this.highScore = null
     }
     setupUI(snake)
     {
@@ -40,13 +41,18 @@ class UI
             $pane.removeChild(child)
         })
     }
+    scoreUpdater(newScore)
+    {
+        $scorePanal.childNodes[0].nodeValue = newScore
+    }
     endGame(snake)
     {
+        const score = snake.length*10-10
         $msg.style.display = 'flex'
-        $message.innerText = 'Game Over!'
-        $score.innerText = snake.length*10
+        $message.innerText = this.highScore && this.highScore < score ? 'High Score!' : 'Game Over!'
+        $score.innerText = score
         $start.innerText = 'Restart'
-        // this.cleanUI()
+        this.highScore = this.highScore<score ? score : this.highScore
         clearInterval(this.renderUI)
     }
 }

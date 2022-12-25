@@ -87,9 +87,44 @@ body {
     box-shadow: 0 0 5px 2px white;
 }
 
+.score-panel {
+    width: 100px;
+    height: 30px;
+    background-color: limegreen;
+    border: 2px solid white;
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-items: center;
+    text-align: center;
+    right: 50px;
+    color: white;
+    font-size: large;
+}
+
+.icon {
+    background: url('https://i.pinimg.com/474x/87/cf/64/87cf6467d633eb65a36f176524aa35b6.jpg');
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    background-color: green;
+    border: 1px dotted green;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
 @media screen and (max-width:850px) {
-    .pane {
-        width: 95%;
+    body{
+        max-height: 100vh;
     }
-    
+    .pane {
+        width: 90%;
+    }
+    .score-panel {
+        width: 80px;
+        top: 10px;
+        right: 0;
+    }
 }

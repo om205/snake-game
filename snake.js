@@ -6,31 +6,43 @@ class Box {
         this.prev = back ? back : null
         this.next = front ? front : null
     }
-    moveUp(step,len)
+    moveUp(step,len,wall)
     {
         if(this.posY <= 0)
-        this.posY = len
+        {
+            if(wall) throw 'hit'
+            else this.posY = len
+        }
         else this.posY -= step
     }
-    moveDown(step,len)
+    moveDown(step,len,wall)
     {
         if(this.posY >= len)
-        this.posY = 0
+        {
+            if(wall) throw 'hit'
+            else this.posY = 0
+        }
         else this.posY += step
     }
-    moveLeft(step,len)
+    moveLeft(step,len,wall)
     {
         if(this.posX <= 0)
-        this.posX = len
+        {
+            if(wall) throw 'hit'
+            else this.posX = len
+        }
         else this.posX -= step
     }
-    moveRight(step,len)
+    moveRight(step,len,wall)
     {
         if(this.posX >= len)
-        this.posX = 0
+        {
+            if(wall) throw 'hit'
+            else this.posX = 0
+        }
         else this.posX += step
     }
-    move(steps,dir)
+    move(steps,dir,wall)
     {
         // to optimize the game we can calculate the height and width of pane only at start of game but it might create some issue
         const paneStyle = getComputedStyle($pane)
@@ -38,16 +50,16 @@ class Box {
         switch(dir)
         {
             case 2:
-                this.moveDown(steps,h)
+                this.moveDown(steps,h,wall)
                 break;
             case 4:
-                this.moveLeft(steps,w)
+                this.moveLeft(steps,w,wall)
                 break;
             case 6:
-                this.moveRight(steps,w)
+                this.moveRight(steps,w,wall)
                 break;
             case 8:
-                this.moveUp(steps,h)
+                this.moveUp(steps,h,wall)
                 break;
         }
     }
@@ -61,7 +73,8 @@ class Snake {
         this.tail = null
         this.length = 1
         this.speed = 5
-        this.food = new Box('food',400,400,null,null)
+        this.concreteWall = true
+        this.food = new Box('food',150,100,null,null)
         this.direction = 6
         this.movement = null
         // this.temp = null
@@ -71,7 +84,12 @@ class Snake {
     move() 
     {
         const { posX, posY } = this.head
-        this.head.move(10,this.direction)
+        try {
+            this.head.move(10,this.direction,this.concreteWall)
+        } catch (err) {
+            if(err === 'hit')
+            return this.stop()
+        }
         if(this.tail)
         {
             this.tail.posX = posX
@@ -146,6 +164,7 @@ class Snake {
     grow()
     {
         this.length++
+        ui.scoreUpdater(this.length*10-10)
         if(this.tail)
         {
             const { posX, posY, next } = this.tail

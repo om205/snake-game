@@ -3,6 +3,7 @@ const $message = document.getElementById('message')
 const $score = document.getElementById('score')
 const $msg = document.getElementById('msg')
 const $pane = document.getElementById('pane')
+const $scorePanal = document.getElementById('score-panel')
 
 const ui = new UI()
 
@@ -37,6 +38,7 @@ $start.addEventListener('click', event => {
     }, false)
 
     document.addEventListener('touchmove', evt => {
+        evt.preventDefault()
         if (!xDown || !yDown) {
             return;
         }
