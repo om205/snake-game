@@ -145,7 +145,7 @@ body {
         max-height: -webkit-fill-available;
     }
     html {
-    height: -webkit-fill-available;
+        max-height: -webkit-fill-available;
     }
     .pane {
         width: 90%;
