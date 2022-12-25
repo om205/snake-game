@@ -116,8 +116,12 @@ body {
 }
 
 @media screen and (max-width:850px) {
-    body{
+    body {
         max-height: 100vh;
+        max-height: -webkit-fill-available;
+    }
+    html {
+      height: -webkit-fill-available;
     }
     .pane {
         width: 90%;
