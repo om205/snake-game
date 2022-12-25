@@ -17,8 +17,17 @@ const themes = {
     '--bgThemeXXLight':['greenyellow','crimson','aquamarine','gold'],
     '--bgThemeXXDark':['darkgreen','brown','dodgerblue','brown']
 }
-let snake = null
 
+//for setting mobile viewport height
+const appHeight = () => {
+    const doc = document.querySelector('body')
+    if(window.innerWidth < 800)
+    doc.style.height = `${window.innerHeight}px`
+}
+window.addEventListener('resize', appHeight)
+appHeight()
+
+let snake = null
 const ui = new UI()
 
 $settingsOpen.addEventListener('click',ui.openSettings)
