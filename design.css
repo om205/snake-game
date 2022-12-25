@@ -140,7 +140,7 @@ body {
 
 @media screen and (max-width:850px) {
     body{
-        scroll-behavior: contain;
+        overscroll-behavior: contain;
         max-height: 100vh;
         min-height:80%;
     }
