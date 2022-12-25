@@ -19,6 +19,13 @@ const themes = {
 }
 let snake = null
 
+const appHeight = () => {
+    const doc = document.querySelector('body')
+    doc.style.height = `${window.innerHeight}px`
+}
+window.addEventListener('resize', appHeight)
+appHeight()
+
 const ui = new UI()
 
 $settingsOpen.addEventListener('click',ui.openSettings)
